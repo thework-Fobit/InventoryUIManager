@@ -1,0 +1,7 @@
+name: InventoryUIManager
+version: '${project.version}'
+main: fan.frozen.inventoryuimanager.InventoryUIManager
+api-version: 1.18
+commands:
+  uimanager:
+    description: none

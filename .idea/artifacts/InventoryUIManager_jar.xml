@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="InventoryUIManager:jar">
+    <output-path>$PROJECT_DIR$/../../minecraftModeDevelop/minecraft 1.18/plugins</output-path>
+    <root id="archive" name="InventoryUIManager.jar">
+      <element id="module-output" name="InventoryUIManager" />
+    </root>
+  </artifact>
+</component>
