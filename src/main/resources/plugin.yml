@@ -4,4 +4,5 @@ main: fan.frozen.inventoryuimanager.InventoryUIManager
 api-version: 1.18
 commands:
   uimanager:
-    description: none
+    description: mange UI easily
+    permission: op

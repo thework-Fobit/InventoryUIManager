@@ -119,6 +119,9 @@ public abstract class AbstractInventory {
         return unregisterComponents;
     }
 
+    public void setUnregisterComponents(boolean unregisterComponents){
+        this.unregisterComponents = unregisterComponents;
+    }
 
     /*
        like multiple page inventory, it's openInventory method is to open current page of the inventory

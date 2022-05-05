@@ -23,10 +23,9 @@ public class UIManagementInventory {
     MultiPageInventory multiPageInventory;
 
     public UIManagementInventory() {
-
     }
     public void initialize(){
-        multiPageInventory = new MultiPageInventory(ChatColor.of(new Color(0x0080FF))+"ManagerUI",InventoryUIManager.getProvidingPlugin(InventoryUIManager.class),false,Bukkit.createInventory(null,54,"InventoryManagement"));
+        multiPageInventory = new MultiPageInventory(ChatColor.of(new Color(0x0080FF))+"ManagerUI",InventoryUIManager.getProvidingPlugin(InventoryUIManager.class),true,Bukkit.createInventory(null,54,"InventoryManagement"));
         Label label = new Label("page counter",new ItemStack(Material.PAPER),49,true,"page: "+multiPageInventory.getCurrentDisplayIndex(),multiPageInventory.getMaxPageCount()+" pages in total");
         multiPageInventory.registerComponent(label, multiPageInventory.ALL_PAGE_INDEXES);
         multiPageInventory.registerComponent(new PageFlipperUp("pagerFlipperUp",ItemUtil.getItemWithName(Material.ARROW, ChatColor.of(new Color(0x0080FF))+"previous"),48,true),multiPageInventory.ALL_PAGE_INDEXES);
@@ -56,6 +55,7 @@ public class UIManagementInventory {
                 @Override
                 public void activeOnTrigger(InventoryClickEvent event) {
                     SecondaryManagementInventory secondaryManagementInventory = new SecondaryManagementInventory(abstractInventory.getInventoryName()+" manager",InventoryUIManager.getProvidingPlugin(InventoryUIManager.class),abstractInventory,multiPageInventory);
+                    multiPageInventory.setUnregisterComponents(false);
                     event.getWhoClicked().openInventory(secondaryManagementInventory.getInventory());
                 }
             });

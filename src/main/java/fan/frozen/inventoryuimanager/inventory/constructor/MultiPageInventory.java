@@ -5,6 +5,7 @@ import fan.frozen.inventoryuimanager.inventory.compnents.Border;
 import fan.frozen.inventoryuimanager.inventory.constants.UIType;
 import fan.frozen.inventoryuimanager.listeners.handlers.AbstractListenerHandler;
 import fan.frozen.inventoryuimanager.listeners.handlers.InventoryCloseEventHandler;
+import fan.frozen.inventoryuimanager.management.InformationCore;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -186,6 +187,7 @@ public class MultiPageInventory extends AbstractInventory{
                        handler.unregisterListener();
                    }
                    this.unregisterListener();
+                   InformationCore.getInstance().removeInventory(MultiPageInventory.this);
                }
             }
         };

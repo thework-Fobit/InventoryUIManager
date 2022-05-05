@@ -44,6 +44,7 @@ public class SecondaryManagementInventory extends MultiPageInventory {
             @Override
             public void activeOnTrigger(InventoryClickEvent event) {
                 event.getWhoClicked().closeInventory();
+                upperInventory.setUnregisterComponents(true);
                 event.getWhoClicked().openInventory(upperInventory.getInventory());
             }
         },ALL_PAGE_INDEXES);
