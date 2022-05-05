@@ -49,7 +49,7 @@ public class Searcher extends AbstractComponent<InventoryClickEvent>{
                         String itemName = searcher.getAnvilInstance().itemName;
                         ArrayList<ItemStack> allItems = new ArrayList<>();
                         if (!Objects.equals(itemName, "enter words to search")) {
-                            for (AbstractInventory abstractInventory : InformationCore.registeredInventory) {
+                            for (AbstractInventory abstractInventory : InformationCore.getInstance().getRegisteredInventory()) {
                                 if (abstractInventory.getInventoryName().contains(itemName)) {
                                     allItems.add(ItemUtil.getItemWithName(Material.BOOK,abstractInventory.getInventoryName()));
                                 }

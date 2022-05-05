@@ -38,7 +38,7 @@ public abstract class AbstractInventory {
         this.uiType = uiType;
         this.plugin = plugin;
         this.unregisterComponents = unregisterComponents;
-        InformationCore.registeredInventory.add(this);
+        InformationCore.getInstance().registerInventory(this);
     }
 
     /**
@@ -50,7 +50,7 @@ public abstract class AbstractInventory {
         this.inventory = inventory;
         this.unregisterComponents = unregisterComponents;
         this.plugin = plugin;
-        InformationCore.registeredInventory.add(this);
+        InformationCore.getInstance().registerInventory(this);
     }
     public Inventory getInventory(){
         return inventory;

@@ -40,7 +40,7 @@ public class UIManagementInventory {
                 ),
                 multiPageInventory.ALL_PAGE_INDEXES
         );
-        for (AbstractInventory abstractInventory : InformationCore.registeredInventory) {
+        for (AbstractInventory abstractInventory : InformationCore.getInstance().getRegisteredInventory()) {
             if (multiPageInventory.getInventory().firstEmpty()>35){
                 multiPageInventory.addPages(Bukkit.createInventory(null,54,"InventoryManagement"));
                 multiPageInventory.felipPageDown();

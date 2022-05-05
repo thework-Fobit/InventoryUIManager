@@ -77,6 +77,6 @@ public class SecondaryManagementInventory extends MultiPageInventory {
 
     @Override
     public void onClose(InventoryCloseEvent event) {
-        InformationCore.registeredInventory.remove(this);
+        InformationCore.getInstance().removeInventory(this);
     }
 }
