@@ -23,7 +23,7 @@ public class UIManagementInventory {
     MultiPageInventory multiPageInventory;
 
     public UIManagementInventory() {
-        initialize();
+
     }
     public void initialize(){
         multiPageInventory = new MultiPageInventory(ChatColor.of(new Color(0x0080FF))+"ManagerUI",InventoryUIManager.getProvidingPlugin(InventoryUIManager.class),false,Bukkit.createInventory(null,54,"InventoryManagement"));
@@ -65,6 +65,7 @@ public class UIManagementInventory {
         label.setText("page: "+multiPageInventory.getCurrentDisplayIndex(),multiPageInventory.getMaxPageCount()+" pages in total");
     }
     public void switchInventory(Player player){
+        initialize();
         multiPageInventory.openInventory(player);
     }
 }
