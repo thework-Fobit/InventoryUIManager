@@ -1,8 +1,8 @@
 # InventoryUIManager
 its a developing minecraft spigot API which you can use it to create and manage inventory UI easily
 # how to get access to IUM
- you can access IUM by maven
- example down below
+ you can access IUM by maven<br>
+ example down below shows how you can add IUM into your maven project as a dependency
 ```xml
 <dependency>
   <groupId>fan.frozen</groupId>
