@@ -24,13 +24,12 @@ public abstract class Button extends AbstractComponent<InventoryClickEvent> {
                     new InventoryClickEventHandler(abstractInventory, abstractInventory.getPlugin()){
                         @Override
                         public void onActive(InventoryClickEvent event) {
-                            event.setCancelled(true);
                             if (hashCodes.size()>0){
                                 if (event.getSlot()==location&&hashCodes.contains(event.getInventory().hashCode())){
+                                    event.setCancelled(true);
                                     activeOnTrigger(event);
                                 }
                             }
-
                         }
                     }
             );

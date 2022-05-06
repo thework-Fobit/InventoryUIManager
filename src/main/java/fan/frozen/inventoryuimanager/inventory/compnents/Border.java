@@ -35,8 +35,10 @@ public class Border extends AbstractComponent<InventoryClickEvent> {
                 new InventoryClickEventHandler(abstractInventory, abstractInventory.getPlugin()){
                     @Override
                     public void onActive(InventoryClickEvent event) {
-                        event.setCancelled(true);
-                        activeOnTrigger(event);
+                        if (CommonUtil.intArrayContains(deploySlots,event.getSlot())){
+                            event.setCancelled(true);
+                            activeOnTrigger(event);
+                        }
                     }
                 }
         );
@@ -82,7 +84,7 @@ public class Border extends AbstractComponent<InventoryClickEvent> {
      * @param slots add the locations to the array
      */
     public void addSlots(int... slots){
-        this.deploySlots = CommonUtil.addElements(deploySlots,slots);
+        this.deploySlots = CommonUtil.addIntegerElements(deploySlots,slots);
     }
 
     /**

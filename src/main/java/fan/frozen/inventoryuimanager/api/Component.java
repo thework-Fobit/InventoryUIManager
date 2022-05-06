@@ -83,4 +83,9 @@ public interface Component <T extends Event> {
      * @return components name
      */
     String getComponentName();
+
+    /**
+     * @return bonded inventory
+     */
+    AbstractInventory getBondedInventory();
 }
