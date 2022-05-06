@@ -10,7 +10,7 @@ its a developing minecraft spigot API which you can use it to create and manage 
   <version>1.1.1-SNAPSHOT</version>
 </dependency>
 ```
-## how can I use IUM
+# how can I use IUM
 ## User
 use command
 ```text
