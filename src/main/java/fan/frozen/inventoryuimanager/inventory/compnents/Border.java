@@ -35,9 +35,17 @@ public class Border extends AbstractComponent<InventoryClickEvent> {
                 new InventoryClickEventHandler(abstractInventory, abstractInventory.getPlugin()){
                     @Override
                     public void onActive(InventoryClickEvent event) {
-                        if (CommonUtil.intArrayContains(deploySlots,event.getSlot())){
-                            event.setCancelled(true);
-                            activeOnTrigger(event);
+                        int hashCode;
+                        if (event.getClickedInventory()==null) {
+                            hashCode = -1;
+                        }else {
+                            hashCode = event.getClickedInventory().hashCode();
+                        }
+                        if (hashCodes.size()>0){
+                            if (hashCodes.contains(event.getInventory().hashCode())&&CommonUtil.intArrayContains(deploySlots,event.getSlot())&&hashCode==event.getView().getTopInventory().hashCode()){
+                                event.setCancelled(true);
+                                activeOnTrigger(event);
+                            }
                         }
                     }
                 }

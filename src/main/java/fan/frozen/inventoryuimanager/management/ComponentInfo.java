@@ -2,7 +2,6 @@ package fan.frozen.inventoryuimanager.management;
 
 import fan.frozen.inventoryuimanager.api.Component;
 import fan.frozen.inventoryuimanager.api.Info;
-import fan.frozen.inventoryuimanager.inventory.compnents.AbstractComponent;
 import fan.frozen.inventoryuimanager.inventory.constants.ComponentType;
 import org.bukkit.plugin.Plugin;
 

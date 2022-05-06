@@ -43,9 +43,17 @@ public class Label extends AbstractComponent<InventoryClickEvent> {
                 {
                     @Override
                     public void onActive(InventoryClickEvent event) {
-                        if(event.getSlot()==location){
-                            event.setCancelled(true);
-                            activeOnTrigger(event);
+                        int hashCode;
+                        if (event.getClickedInventory()==null) {
+                            hashCode = -1;
+                        }else {
+                            hashCode = event.getClickedInventory().hashCode();
+                        }
+                        if (hashCodes.size()>0){
+                            if(hashCodes.contains(event.getInventory().hashCode())&&event.getSlot()==location&&hashCode==event.getView().getTopInventory().hashCode()){
+                                event.setCancelled(true);
+                                activeOnTrigger(event);
+                            }
                         }
                     }
                 }

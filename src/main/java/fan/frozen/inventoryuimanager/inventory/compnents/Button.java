@@ -24,8 +24,19 @@ public abstract class Button extends AbstractComponent<InventoryClickEvent> {
                     new InventoryClickEventHandler(abstractInventory, abstractInventory.getPlugin()){
                         @Override
                         public void onActive(InventoryClickEvent event) {
+                            int hashCode;
+                            if (event.getClickedInventory()==null) {
+                                hashCode = -1;
+                            }else {
+                                hashCode = event.getClickedInventory().hashCode();
+                            }
+                            /*I have to compare them all
+                               event.getSlot() is for checking the player click on right position
+                               hashCodes.contains is for checking the player click on right inventory
+                               event.getView is for checking player is click on the menu instead of their inventory
+                             */
                             if (hashCodes.size()>0){
-                                if (event.getSlot()==location&&hashCodes.contains(event.getInventory().hashCode())){
+                                if (event.getSlot()==location&&hashCodes.contains(event.getInventory().hashCode())&&hashCode==event.getView().getTopInventory().hashCode()){
                                     event.setCancelled(true);
                                     activeOnTrigger(event);
                                 }
