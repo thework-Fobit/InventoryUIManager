@@ -10,6 +10,7 @@ import fan.frozen.inventoryuimanager.inventory.constructor.MultiPageInventory;
 import fan.frozen.inventoryuimanager.inventory.instance.components.PageFlipperDown;
 import fan.frozen.inventoryuimanager.inventory.instance.components.PageFlipperUp;
 import fan.frozen.inventoryuimanager.management.InformationCore;
+import fan.frozen.inventoryuimanager.management.InventoryInfo;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -39,6 +40,16 @@ public class UIManagementInventory {
                 ),
                 multiPageInventory.ALL_PAGE_INDEXES
         );
+        getAllRegisteredInventory();
+        multiPageInventory.setCurrentPage(multiPageInventory.getPage(0));
+        multiPageInventory.setCurrentPageIndex(0);
+        label.setText("page: "+multiPageInventory.getCurrentDisplayIndex(),multiPageInventory.getMaxPageCount()+" pages in total");
+    }
+    public void switchInventory(Player player){
+        initialize();
+        multiPageInventory.openInventory(player);
+    }
+    void getAllRegisteredInventory(){
         for (AbstractInventory abstractInventory : InformationCore.getInstance().getRegisteredInventory()) {
             if (multiPageInventory.getInventory().firstEmpty()>35){
                 multiPageInventory.addPages(Bukkit.createInventory(null,54,"InventoryManagement"));
@@ -46,11 +57,7 @@ public class UIManagementInventory {
             }
             ItemStack itemStack = new ItemStack(Material.CHEST);
             ItemUtil.changeItemName(itemStack,abstractInventory.getInventoryName());
-            ItemUtil.changeItemLore(itemStack
-                    ,"Type: "+abstractInventory.getUiType().getType()
-                    ,"register: "+abstractInventory.getPlugin().getName()
-                    ,"hash: "+abstractInventory.hashCode()
-            );
+            ItemUtil.changeItemLore(itemStack,new InventoryInfo(multiPageInventory).getInfo());
             multiPageInventory.registerComponent(new Button(abstractInventory.getInventoryName(),itemStack,multiPageInventory.getInventory().firstEmpty()) {
                 @Override
                 public void activeOnTrigger(InventoryClickEvent event) {
@@ -60,12 +67,5 @@ public class UIManagementInventory {
                 }
             });
         }
-        multiPageInventory.setCurrentPage(multiPageInventory.getPage(0));
-        multiPageInventory.setCurrentPageIndex(0);
-        label.setText("page: "+multiPageInventory.getCurrentDisplayIndex(),multiPageInventory.getMaxPageCount()+" pages in total");
-    }
-    public void switchInventory(Player player){
-        initialize();
-        multiPageInventory.openInventory(player);
     }
 }
