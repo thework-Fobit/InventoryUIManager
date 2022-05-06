@@ -23,12 +23,19 @@ public class CommonUtil {
         }
         return array;
     }
-    public static int[] addElements(int[] original,int... elements){
+    public static int[] addIntegerElements(int[] original, int... elements){
         int[] array = new int[original.length+elements.length];
         System.arraycopy(original,0,array,0,original.length);
         System.arraycopy(elements,0,array,original.length,elements.length);
         return array;
     }
+    public static String[] addStringElements(String[] original, String... elements){
+        String[] array = new String[original.length+elements.length];
+        System.arraycopy(original,0,array,0,original.length);
+        System.arraycopy(elements,0,array,original.length,elements.length);
+        return array;
+    }
+
     public static String getColor(boolean flag){
         if (flag){
             return ChatColor.of(new Color(0x3DFA00))+"true";
@@ -36,4 +43,13 @@ public class CommonUtil {
             return ChatColor.of(new Color(0xFC0000))+"false";
         }
     }
+    public static boolean intArrayContains(int[] original, int element){
+        for (int i : original) {
+            if (i==element){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
