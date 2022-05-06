@@ -1,9 +1,16 @@
 # InventoryUIManager
 its a developing minecraft spigot API which you can use it to create and manage inventory UI easily
 # how to get access to IUM
-we are still working on maven access
-please be patient
-## how can I use IUM
+ you can access IUM by maven<br>
+ example down below shows how you can add IUM into your maven project as a dependency
+```xml
+<dependency>
+  <groupId>fan.frozen</groupId>
+  <artifactId>InventoryUIManager</artifactId>
+  <version>1.1.1-SNAPSHOT</version>
+</dependency>
+```
+# how can I use IUM
 ## User
 use command
 ```text
@@ -73,7 +80,7 @@ public class Example {
 }
 ```
 **to be noticed, pleas use getInstance(Player,String,Plugin) to get anvil instance instead of using constructor to construct**
-## handle invnetory events
+### handle invnetory events
 we provide very easy access to the inventory events
 now if you want to listen to a inventory click event you can do this
 1. first create a handler class which extends to InventoryClickEventHandler
@@ -140,7 +147,7 @@ public class HandlerRegistrationExample {
     }
 }
 ```
-## components and its registrations
+### components and its registrations
 if you think is annoy for you to write your own running logic
 we also provide you some components you can use
 1. Button
