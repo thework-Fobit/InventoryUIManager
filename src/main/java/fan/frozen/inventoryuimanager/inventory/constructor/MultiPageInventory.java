@@ -187,7 +187,6 @@ public class MultiPageInventory extends AbstractInventory{
                        handler.unregisterListener();
                    }
                    this.unregisterListener();
-                   InformationCore.getInstance().removeInventory(MultiPageInventory.this);
                }
             }
         };

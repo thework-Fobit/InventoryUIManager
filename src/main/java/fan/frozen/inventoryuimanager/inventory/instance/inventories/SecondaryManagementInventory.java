@@ -12,6 +12,7 @@ import fan.frozen.inventoryuimanager.inventory.constructor.AbstractInventory;
 import fan.frozen.inventoryuimanager.inventory.constructor.MultiPageInventory;
 import fan.frozen.inventoryuimanager.inventory.instance.components.PageFlipperDown;
 import fan.frozen.inventoryuimanager.inventory.instance.components.PageFlipperUp;
+import fan.frozen.inventoryuimanager.management.ComponentInfo;
 import fan.frozen.inventoryuimanager.management.InformationCore;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
@@ -58,10 +59,7 @@ public class SecondaryManagementInventory extends MultiPageInventory {
                 this.felipPageDown();
             }
             this.registerComponent(new Label(registeredComponent.getComponentName(),new ItemStack(Material.WRITABLE_BOOK),this.getInventory().firstEmpty()
-                    ,registeredComponent.getComponentType().getType()
-                    ,TextUtil.getTag("componentLocation: ") +ChatColor.of(new Color(0xAB19D9))+registeredComponent.getLocation()
-                    ,TextUtil.getTag("componentMaterial: ")+ChatColor.of(new Color(0xFFC000))+registeredComponent.getMaterial().getType().name()
-                    ,TextUtil.getTag("consistency: ")+CommonUtil.getColor(registeredComponent.isConsist())
+                    ,CommonUtil.addStringElements(new String[]{registeredComponent.getComponentName()},new ComponentInfo(registeredComponent).getInfo())
             ){
                 @Override
                 public void activeOnTrigger(InventoryClickEvent event) {
@@ -81,3 +79,6 @@ public class SecondaryManagementInventory extends MultiPageInventory {
         InformationCore.getInstance().removeInventory(this);
     }
 }
+//,TextUtil.getTag("componentLocation: ") +ChatColor.of(new Color(0xAB19D9))+registeredComponent.getLocation()
+//        ,TextUtil.getTag("componentMaterial: ")+ChatColor.of(new Color(0xFFC000))+registeredComponent.getMaterial().getType().name()
+//        ,TextUtil.getTag("consistency: ")+CommonUtil.getColor(registeredComponent.isConsist())
