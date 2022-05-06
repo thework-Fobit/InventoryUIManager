@@ -80,7 +80,7 @@ public class Example {
 }
 ```
 **to be noticed, pleas use getInstance(Player,String,Plugin) to get anvil instance instead of using constructor to construct**
-## handle invnetory events
+### handle invnetory events
 we provide very easy access to the inventory events
 now if you want to listen to a inventory click event you can do this
 1. first create a handler class which extends to InventoryClickEventHandler
@@ -147,7 +147,7 @@ public class HandlerRegistrationExample {
     }
 }
 ```
-## components and its registrations
+### components and its registrations
 if you think is annoy for you to write your own running logic
 we also provide you some components you can use
 1. Button
