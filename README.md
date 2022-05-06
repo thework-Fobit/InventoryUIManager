@@ -7,7 +7,7 @@ its a developing minecraft spigot API which you can use it to create and manage 
 <dependency>
   <groupId>fan.frozen</groupId>
   <artifactId>InventoryUIManager</artifactId>
-  <version>1.1.1-SNAPSHOT</version>
+  <version>1.2-SNAPSHOT</version>
 </dependency>
 ```
 # how can I use IUM
