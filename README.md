@@ -4,11 +4,20 @@ its a developing minecraft spigot API which you can use it to create and manage 
  you can access IUM by maven<br>
  example down below shows how you can add IUM into your maven project as a dependency
 ```xml
-<dependency>
-  <groupId>fan.frozen</groupId>
-  <artifactId>InventoryUIManager</artifactId>
-  <version>1.2-SNAPSHOT</version>
-</dependency>
+<dependencies>
+        <dependency>
+            <groupId>fan.frozen</groupId>
+            <artifactId>InventoryUIManager</artifactId>
+            <version>1.2-SNAPSHOT</version>
+        </dependency>
+</dependencies>
+
+<repositories>
+        <repository>
+            <id>sonatype</id>
+            <url>https://s01.oss.sonatype.org/content/groups/public/</url>
+        </repository>
+    </repositories>
 ```
 # how can I use IUM
 download the version you want and put it in your server<br>
