@@ -12,7 +12,7 @@ its a developing minecraft spigot API which you can use it to create and manage 
 ```
 # how can I use IUM
 download the version you want and put it in your server<br>
-**if you are using anything develop based on the IUM, please make sure your server have install IUM plugin
+**if you are using anything develop based on the IUM, please make sure your server have install IUM plugin**
 ## User
 use command
 ```text
