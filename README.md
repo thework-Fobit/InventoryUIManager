@@ -220,3 +220,5 @@ public class ComponentsAndRegistrationExample {
 ***
 we still have many components' development on our develop schedule
 if you have any good idea, please let us know
+### JavaDoc
+get JavaDoc at [here](https://drive.google.com/file/d/15rAGHOSWpo8PpPh25ugEAdXsgohoKIfP/view?usp=sharing)
