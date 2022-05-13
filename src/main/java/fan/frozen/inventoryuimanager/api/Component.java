@@ -43,10 +43,19 @@ public interface Component <T extends Event> {
     ItemStack getMaterial();
 
     /**
+     * @param material the material you want set
+     */
+    void setMaterial(ItemStack material);
+    /**
      * get where your component will be shown in the inventory
      * @return the location of the component in the inventory
      */
     int getLocation();
+
+    /**
+     * @param location the location you want set
+     */
+    void setLocation(int location);
 
     /**
      * when you have multiple page inventory, you can use this to appoint which inventory you want it to work on

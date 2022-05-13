@@ -46,6 +46,13 @@ public abstract class AbstractComponent <T extends Event> implements Component<T
         return location;
     }
 
+    public void setLocation(int location){
+        this.location = location;
+    }
+
+    public void setMaterial(ItemStack material){
+        this.material = material;
+    }
     @Override
     public void setOnlyWorkAt(Inventory... inventories) {
         hashCodes.clear();
