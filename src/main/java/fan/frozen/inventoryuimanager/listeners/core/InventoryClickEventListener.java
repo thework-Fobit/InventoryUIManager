@@ -12,10 +12,7 @@ public class InventoryClickEventListener extends AbstractListener<InventoryClick
         super(plugin);
     }
 
-    /**
-     * original spigot listener method, which used to call up handler
-     * @param inventoryClickEvent original spigot event object
-     */
+
     @EventHandler
     public void getEvent(InventoryClickEvent inventoryClickEvent){
         lockThread();

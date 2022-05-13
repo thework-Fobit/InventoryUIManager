@@ -13,9 +13,6 @@ public class InventoryCloseEventListener extends AbstractListener<InventoryClose
         super(plugin);
     }
 
-    /**
-     * @see InventoryClickEventListener#getEvent(InventoryClickEvent)
-     */
     @EventHandler
     public void getEvent(InventoryCloseEvent inventoryCloseEvent){
         lockThread();

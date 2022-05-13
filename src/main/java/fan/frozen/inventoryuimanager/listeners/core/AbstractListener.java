@@ -22,6 +22,13 @@ public abstract class AbstractListener <T extends Event> implements Listener {
     ArrayList<AbstractListenerHandler<T>> templateRemovingInventoryStores = new ArrayList<>();
 
     /**
+     * define every listener should have a getEvent() method<br>
+     * original spigot listener method, which used to call up handler
+     * @param event the event which listener are listening
+     */
+    public abstract void getEvent(T event);
+
+    /**
      *
      * @param plugin used to register event listener
      */

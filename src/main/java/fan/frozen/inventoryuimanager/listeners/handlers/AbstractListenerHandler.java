@@ -4,6 +4,7 @@ import fan.frozen.inventoryuimanager.inventory.constructor.AbstractInventory;
 import fan.frozen.inventoryuimanager.listeners.core.AbstractListener;
 import org.bukkit.event.Event;
 import org.bukkit.event.inventory.InventoryEvent;
+import org.bukkit.plugin.Plugin;
 
 /**
  * handler is the object that deals with inventories and components so
@@ -14,8 +15,11 @@ import org.bukkit.event.inventory.InventoryEvent;
 public abstract class AbstractListenerHandler <T extends Event>{
     AbstractInventory AbsInventory;
     AbstractListener<T> abstractListener;
-    public AbstractListenerHandler(AbstractInventory abstractInventory){
+    protected final Plugin plugin;
+    public AbstractListenerHandler(AbstractInventory abstractInventory,Plugin plugin){
         AbsInventory = abstractInventory;
+        this.plugin = plugin;
+        initialize();
     }
 
     /**

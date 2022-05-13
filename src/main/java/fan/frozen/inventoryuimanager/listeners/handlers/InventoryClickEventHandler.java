@@ -10,11 +10,9 @@ import org.bukkit.plugin.Plugin;
  * handler used to handle inventory click event
  */
 public class InventoryClickEventHandler extends AbstractListenerHandler<InventoryClickEvent> {
-    private final Plugin plugin;
+
     public InventoryClickEventHandler(AbstractInventory abstractInventory, Plugin plugin) {
-        super(abstractInventory);
-        this.plugin = plugin;
-        initialize();
+        super(abstractInventory,plugin);
     }
     @Override
     public void initialize(){

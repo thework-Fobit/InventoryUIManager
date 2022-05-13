@@ -10,11 +10,9 @@ import org.bukkit.plugin.Plugin;
  * handler used to handle inventory close event
  */
 public class InventoryCloseEventHandler extends AbstractListenerHandler<InventoryCloseEvent> {
-    private final Plugin plugin;
+
     public InventoryCloseEventHandler(AbstractInventory abstractInventory, Plugin plugin) {
-        super(abstractInventory);
-        this.plugin = plugin;
-        initialize();
+        super(abstractInventory,plugin);
     }
 
     @Override
