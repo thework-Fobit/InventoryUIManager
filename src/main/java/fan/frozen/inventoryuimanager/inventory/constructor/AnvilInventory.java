@@ -1,33 +1,21 @@
 package fan.frozen.inventoryuimanager.inventory.constructor;
 
-import fan.frozen.inventoryuimanager.InventoryUIManager;
-import fan.frozen.inventoryuimanager.Utils.ItemUtil;
 import fan.frozen.inventoryuimanager.api.Component;
 import fan.frozen.inventoryuimanager.api.NMSVersionWrappers.CurrentVersionWrapper;
 import fan.frozen.inventoryuimanager.inventory.constants.UIType;
 import fan.frozen.inventoryuimanager.listeners.handlers.AbstractListenerHandler;
-import fan.frozen.inventoryuimanager.listeners.handlers.InventoryClickEventHandler;
 import fan.frozen.inventoryuimanager.listeners.handlers.InventoryCloseEventHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.protocol.game.ClientboundOpenScreenPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.item.AirItem;
 import net.minecraft.world.item.ItemStack;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
-
-import java.io.File;
 
 /**
  * anvil inventory used NMS to realize<br>
