@@ -16,6 +16,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.awt.*;
@@ -26,7 +27,12 @@ public class UIManagementInventory {
     public UIManagementInventory() {
     }
     public void initialize(){
-        multiPageInventory = new MultiPageInventory(ChatColor.of(new Color(0x0080FF))+"ManagerUI",InventoryUIManager.getProvidingPlugin(InventoryUIManager.class),true,Bukkit.createInventory(null,54,"InventoryManagement"));
+        multiPageInventory = new MultiPageInventory(ChatColor.of(new Color(0x0080FF))+"ManagerUI",InventoryUIManager.getProvidingPlugin(InventoryUIManager.class),true,Bukkit.createInventory(null,54,"InventoryManagement")){
+            @Override
+            public void onClose(InventoryCloseEvent closeEvent) {
+                InformationCore.getInstance().removeInventory(this);
+            }
+        };
         Label label = new Label("page counter",new ItemStack(Material.PAPER),49,true,"page: "+multiPageInventory.getCurrentDisplayIndex(),multiPageInventory.getMaxPageCount()+" pages in total");
         multiPageInventory.registerComponent(label, multiPageInventory.ALL_PAGE_INDEXES);
         multiPageInventory.registerComponent(new PageFlipperUp("pagerFlipperUp",ItemUtil.getItemWithName(Material.ARROW, ChatColor.of(new Color(0x0080FF))+"previous"),48,true),multiPageInventory.ALL_PAGE_INDEXES);
