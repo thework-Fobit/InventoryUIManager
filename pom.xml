@@ -6,7 +6,7 @@
 
     <groupId>fan.frozen</groupId>
     <artifactId>InventoryUIManager</artifactId>
-    <version>1.3-SNAPSHOT</version>
+    <version>1.4-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>InventoryUIManager</name>
@@ -102,7 +102,7 @@
                         <echo message="*******************package*******************" />
                         <copy todir="F:/minecraftModeDevelop/minecraft 1.18/plugins" overwrite="true">
                             <fileset dir="${project.build.directory}" erroronmissingdir="false">
-                                <include name="InventoryUIManager-1.3-SNAPSHOT.jar" /> </fileset>
+                                <include name="InventoryUIManager-1.4-SNAPSHOT.jar" /> </fileset>
                         </copy>
                     </target>
                 </configuration>

@@ -5,9 +5,11 @@ import fan.frozen.inventoryuimanager.api.Component;
 import fan.frozen.inventoryuimanager.inventory.constants.UIType;
 import fan.frozen.inventoryuimanager.listeners.handlers.AbstractListenerHandler;
 import fan.frozen.inventoryuimanager.management.InformationCore;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 

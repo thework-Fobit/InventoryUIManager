@@ -28,6 +28,12 @@ public enum ComponentType {
         public String getType() {
             return "searcher";
         }
+    },
+    TEXT_FIELD(){
+        @Override
+        public String getType() {
+            return "textField";
+        }
     };
     public abstract String getType();
 }

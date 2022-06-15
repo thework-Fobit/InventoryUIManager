@@ -89,6 +89,13 @@ public abstract class AbstractComponent <T extends Event> implements Component<T
         bondedInventory.getInventory().setItem(this.getLocation(),null);
     }
 
+    public void reloadComponent(){
+        if (bondedInventory!=null){
+            unregister();
+            bondedInventory.registerComponent(this);
+        }
+    }
+
     /**
      *  get the abstractInventory which the component belongs to
      * @return abstractInventory the component belongs to

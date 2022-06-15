@@ -4,6 +4,7 @@ import fan.frozen.inventoryuimanager.InventoryUIManager;
 import fan.frozen.inventoryuimanager.Utils.ItemUtil;
 import fan.frozen.inventoryuimanager.inventory.compnents.Button;
 import fan.frozen.inventoryuimanager.inventory.compnents.Label;
+import fan.frozen.inventoryuimanager.inventory.compnents.TextField;
 import fan.frozen.inventoryuimanager.inventory.constants.BorderPreset;
 import fan.frozen.inventoryuimanager.inventory.constructor.AbstractInventory;
 import fan.frozen.inventoryuimanager.inventory.constructor.MultiPageInventory;
@@ -17,58 +18,60 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.awt.*;
 
 public class UIManagementInventory {
-    MultiPageInventory multiPageInventory;
+    MultiPageInventory innerInventory;
 
     public UIManagementInventory() {
+
     }
     public void initialize(){
-        multiPageInventory = new MultiPageInventory(ChatColor.of(new Color(0x0080FF))+"ManagerUI",InventoryUIManager.getProvidingPlugin(InventoryUIManager.class),true,Bukkit.createInventory(null,54,"InventoryManagement")){
+        innerInventory = new MultiPageInventory(ChatColor.of(new Color(0x0080FF))+"ManagerUI",InventoryUIManager.getProvidingPlugin(InventoryUIManager.class),true,Bukkit.createInventory(null,54,"InventoryManagement")){
             @Override
             public void onClose(InventoryCloseEvent closeEvent) {
                 InformationCore.getInstance().removeInventory(this);
             }
         };
-        Label label = new Label("page counter",new ItemStack(Material.PAPER),49,true,"page: "+multiPageInventory.getCurrentDisplayIndex(),multiPageInventory.getMaxPageCount()+" pages in total");
-        multiPageInventory.registerComponent(label, multiPageInventory.ALL_PAGE_INDEXES);
-        multiPageInventory.registerComponent(new PageFlipperUp("pagerFlipperUp",ItemUtil.getItemWithName(Material.ARROW, ChatColor.of(new Color(0x0080FF))+"previous"),48,true),multiPageInventory.ALL_PAGE_INDEXES);
-        multiPageInventory.registerComponent(new PageFlipperDown("pagerFlipperDown",ItemUtil.getItemWithName(Material.ARROW, ChatColor.of(new Color(0xFF6200))+"next"),50,true), multiPageInventory.ALL_PAGE_INDEXES);
-        multiPageInventory.registerComponent(
+        Label label = new Label("page counter",new ItemStack(Material.PAPER),49,true,"page: "+ innerInventory.getCurrentDisplayIndex(), innerInventory.getMaxPageCount()+" pages in total");
+        innerInventory.registerComponent(label, innerInventory.ALL_PAGE_INDEXES);
+        innerInventory.registerComponent(new PageFlipperUp("pagerFlipperUp",ItemUtil.getItemWithName(Material.ARROW, ChatColor.of(new Color(0x0080FF))+"previous"),48,true), innerInventory.ALL_PAGE_INDEXES);
+        innerInventory.registerComponent(new PageFlipperDown("pagerFlipperDown",ItemUtil.getItemWithName(Material.ARROW, ChatColor.of(new Color(0xFF6200))+"next"),50,true), innerInventory.ALL_PAGE_INDEXES);
+        innerInventory.registerComponent(
                 BorderPreset.HORIZONTAL_BORDER.getBorder(
-                        multiPageInventory.getAbsInventory()
+                        innerInventory.getAbsInventory()
                         ,false
                         ,ItemUtil.getItemWithName(Material.GRAY_STAINED_GLASS_PANE,ChatColor.of(new Color(0x949A94))+"border")
                         ,5
                 ),
-                multiPageInventory.ALL_PAGE_INDEXES
+                innerInventory.ALL_PAGE_INDEXES
         );
         getAllRegisteredInventory();
-        multiPageInventory.setCurrentPage(multiPageInventory.getPage(0));
-        multiPageInventory.setCurrentPageIndex(0);
-        label.setText("page: "+multiPageInventory.getCurrentDisplayIndex(),multiPageInventory.getMaxPageCount()+" pages in total");
+        innerInventory.setCurrentPage(innerInventory.getPage(0));
+        innerInventory.setCurrentPageIndex(0);
+        label.setText("page: "+ innerInventory.getCurrentDisplayIndex(), innerInventory.getMaxPageCount()+" pages in total");
     }
     public void switchInventory(Player player){
         initialize();
-        multiPageInventory.openInventory(player);
+        innerInventory.openInventory(player);
     }
     void getAllRegisteredInventory(){
         for (AbstractInventory abstractInventory : InformationCore.getInstance().getRegisteredInventory()) {
-            if (multiPageInventory.getInventory().firstEmpty()>35){
-                multiPageInventory.addPages(Bukkit.createInventory(null,54,"InventoryManagement"));
-                multiPageInventory.felipPageDown();
+            if (innerInventory.getInventory().firstEmpty()>35){
+                innerInventory.addPages(Bukkit.createInventory(null,54,"InventoryManagement"));
+                innerInventory.felipPageDown();
             }
             ItemStack itemStack = new ItemStack(Material.CHEST);
             ItemUtil.changeItemName(itemStack,abstractInventory.getInventoryName());
-            ItemUtil.changeItemLore(itemStack,new InventoryInfo(multiPageInventory).getInfo());
-            multiPageInventory.registerComponent(new Button(abstractInventory.getInventoryName(),itemStack,multiPageInventory.getInventory().firstEmpty()) {
+            ItemUtil.changeItemLore(itemStack,new InventoryInfo(innerInventory).getInfo());
+            innerInventory.registerComponent(new Button(abstractInventory.getInventoryName(),itemStack, innerInventory.getInventory().firstEmpty()) {
                 @Override
                 public void activeOnTrigger(InventoryClickEvent event) {
-                    SecondaryManagementInventory secondaryManagementInventory = new SecondaryManagementInventory(abstractInventory.getInventoryName()+" manager",InventoryUIManager.getProvidingPlugin(InventoryUIManager.class),abstractInventory,multiPageInventory);
-                    multiPageInventory.setUnregisterComponents(false);
+                    SecondaryManagementInventory secondaryManagementInventory = new SecondaryManagementInventory(abstractInventory.getInventoryName()+" manager",InventoryUIManager.getProvidingPlugin(InventoryUIManager.class),abstractInventory, innerInventory);
+                    innerInventory.setUnregisterComponents(false);
                     event.getWhoClicked().openInventory(secondaryManagementInventory.getInventory());
                 }
             });

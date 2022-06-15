@@ -46,7 +46,7 @@ public class MultiPageInventory extends AbstractInventory{
         if (getCurrentPageIndex()>0){
             setCurrentPageIndex(getCurrentPageIndex()-1);
         }
-        currentPage = allPages[currentPageIndex];
+        currentPage = getPage(currentPageIndex);
     }
 
     /**
@@ -57,7 +57,7 @@ public class MultiPageInventory extends AbstractInventory{
         if (getCurrentPageIndex()<getMaxPageCount()-1){
             setCurrentPageIndex(getCurrentPageIndex()+1);
         }
-        currentPage = allPages[currentPageIndex];
+        currentPage = getPage(currentPageIndex);
     }
 
     /**
@@ -81,6 +81,12 @@ public class MultiPageInventory extends AbstractInventory{
      * @param currentPage page you want to set as the current page
      */
     public void setCurrentPage(Inventory currentPage) {
+        if(containPage(currentPage)){
+            setCurrentPageIndex(getPageIndex(currentPage));
+        }else {
+            addPages(currentPage);
+            setCurrentPageIndex(allPages.length-1);
+        }
         this.currentPage = currentPage;
     }
 
@@ -264,5 +270,23 @@ public class MultiPageInventory extends AbstractInventory{
     public void openInventory(Player player) {
         player.closeInventory();
         player.openInventory(getCurrentPage());
+    }
+
+    boolean containPage(Inventory page){
+        for (Inventory allPage : allPages) {
+            if (allPage.equals(page)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    int getPageIndex(Inventory page){
+        for (int i = 0; i < allPages.length; i++) {
+            if (allPages[i].equals(page)){
+                return i;
+            }
+        }
+        return -1;
     }
 }
