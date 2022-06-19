@@ -15,7 +15,7 @@ import org.bukkit.plugin.Plugin;
  * A component can let you input text
  */
 public class TextField extends AbstractComponent<InventoryClickEvent>{
-    public TextField(ItemStack material, int location, boolean consistency, String componentName) {
+    public TextField(String componentName,ItemStack material, int location, boolean consistency) {
         super(material, location, consistency, ComponentType.TEXT_FIELD, componentName);
     }
 

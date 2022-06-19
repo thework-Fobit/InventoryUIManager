@@ -59,7 +59,7 @@ public class SecondaryManagementInventory extends MultiPageInventory {
                 this.felipPageDown();
             }
             this.registerComponent(new Label(registeredComponent.getComponentName(),new ItemStack(Material.WRITABLE_BOOK),this.getInventory().firstEmpty()
-                    ,CommonUtil.addStringElements(new String[]{registeredComponent.getComponentName()},new ComponentInfo(registeredComponent).getInfo())
+                    ,false,CommonUtil.addStringElements(new String[]{registeredComponent.getComponentName()},new ComponentInfo(registeredComponent).getInfo())
             ){
                 @Override
                 public void activeOnTrigger(InventoryClickEvent event) {

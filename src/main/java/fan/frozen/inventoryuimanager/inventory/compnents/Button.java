@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * a component which can trigger by player click
  */
-public abstract class Button extends AbstractComponent<InventoryClickEvent> {
+public class Button extends AbstractComponent<InventoryClickEvent> {
     public Button(String componentName,ItemStack material,int location){
         this(componentName,material,location,false);
     }
@@ -44,5 +44,10 @@ public abstract class Button extends AbstractComponent<InventoryClickEvent> {
                         }
                     }
             );
+    }
+
+    @Override
+    public void activeOnTrigger(InventoryClickEvent event) {
+
     }
 }

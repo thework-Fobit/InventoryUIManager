@@ -66,7 +66,7 @@ public class UIManagementInventory {
             }
             ItemStack itemStack = new ItemStack(Material.CHEST);
             ItemUtil.changeItemName(itemStack,abstractInventory.getInventoryName());
-            ItemUtil.changeItemLore(itemStack,new InventoryInfo(innerInventory).getInfo());
+            ItemUtil.changeItemLore(itemStack,new InventoryInfo(abstractInventory).getInfo());
             innerInventory.registerComponent(new Button(abstractInventory.getInventoryName(),itemStack, innerInventory.getInventory().firstEmpty()) {
                 @Override
                 public void activeOnTrigger(InventoryClickEvent event) {

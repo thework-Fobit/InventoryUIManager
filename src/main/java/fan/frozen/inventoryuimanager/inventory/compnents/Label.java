@@ -15,16 +15,16 @@ import org.bukkit.inventory.ItemStack;
 
 public class Label extends AbstractComponent<InventoryClickEvent> {
     private String[] texts;
-
+    
+    public Label(String componentName,ItemStack itemStack,int location){
+        this(componentName,itemStack,location,false);
+    }
     /**
      * @param itemStack please see {@link AbstractComponent#AbstractComponent(ItemStack, int, boolean, ComponentType,String)}
      * @param location please see {@link AbstractComponent#AbstractComponent(ItemStack, int, boolean, ComponentType,String)}
      * @param texts the texts you want to display on the label, if the texts are more than one, the first input will become the name of the item
      *              while the others become the lore of the item
      */
-    public Label(String componentName,ItemStack itemStack,int location,String... texts){
-        this(componentName,itemStack,location,false,texts);
-    }
     public Label(String componentName,ItemStack itemStack,int location,boolean consistence,String... texts){
         super(itemStack,location,consistence, ComponentType.LABEL,componentName);
         this.texts = texts;

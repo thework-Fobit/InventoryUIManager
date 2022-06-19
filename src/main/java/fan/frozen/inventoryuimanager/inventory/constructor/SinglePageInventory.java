@@ -18,12 +18,12 @@ import org.bukkit.plugin.Plugin;
  * the {@code onActive(T event)} in the handler to customize your running logic
  */
 public class SinglePageInventory extends AbstractInventory {
-    public SinglePageInventory(Inventory inventory,String inventoryName,Plugin plugin) {
-        this(inventory,inventoryName,true,plugin);
+    public SinglePageInventory(String inventoryName,Plugin plugin,Inventory... inventory) {
+        this(inventoryName,true,plugin,inventory);
     }
     //parameter unregister components means choice when you close the inventory the components inside this inventory should be unregistered or not
-    public SinglePageInventory(Inventory inventory,String inventoryName,boolean unregisterComponents,Plugin plugin) {
-        super(inventory,inventoryName, UIType.SINGLE_PAGE_INVENTORY,unregisterComponents,plugin);
+    public SinglePageInventory(String inventoryName,boolean unregisterComponents,Plugin plugin,Inventory... inventory) {
+        super(inventory[0],inventoryName, UIType.SINGLE_PAGE_INVENTORY,unregisterComponents,plugin);
         initialize();
         this.unregisterComponents = unregisterComponents;
     }
