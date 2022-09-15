@@ -13,6 +13,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 /**
  * multiple page inventory class<br>
@@ -230,10 +232,7 @@ public class MultiPageInventory extends AbstractInventory{
      * which initialize static field {@link MultiPageInventory#ALL_PAGE_INDEXES}
      */
     private void getAllPageIndex(){
-        this.ALL_PAGE_INDEXES = new int[allPages.length];
-        for (int i = 0; i < allPages.length ; i++) {
-            ALL_PAGE_INDEXES[i] = i;
-        }
+        ALL_PAGE_INDEXES = IntStream.range(0, allPages.length).toArray();
     }
 
     /**
@@ -273,12 +272,7 @@ public class MultiPageInventory extends AbstractInventory{
     }
 
     boolean containPage(Inventory page){
-        for (Inventory allPage : allPages) {
-            if (allPage.equals(page)){
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(allPages).anyMatch(i -> i == page);
     }
 
     int getPageIndex(Inventory page){

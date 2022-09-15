@@ -1,6 +1,7 @@
 package fan.frozen.inventoryuimanager;
 
 import fan.frozen.inventoryuimanager.commands.UIManagementCommand;
+import fan.frozen.inventoryuimanager.inventory.XMLAnalyzer.XMLAnalyzer;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
